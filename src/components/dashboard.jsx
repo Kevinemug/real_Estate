@@ -9,6 +9,7 @@ import { BsSearch } from "react-icons/bs";
 import { BsCardChecklist } from "react-icons/bs";
 import { MdOutlineDesignServices } from "react-icons/md";
 import Fade from "react-awesome-reveal";
+import AboutBlair from "./communities";
 
 const Dashboard = () => {
   return (
@@ -78,7 +79,7 @@ const Dashboard = () => {
             <NavLink to="/dashboard/services">
               <DashboardLink
                 icon={<RiDashboard3Line className="iconLink" />}
-                link="Dashboard"
+                link="AboutBlair"
               />
             </NavLink>
           </Fade>
@@ -87,7 +88,7 @@ const Dashboard = () => {
             <NavLink to="/dashboard/services">
               <DashboardLink
                 icon={<RiDashboard3Line className="iconLink" />}
-                link="Dashboard"
+                link="Mls Search"
               />
             </NavLink>
           </Fade>
@@ -96,7 +97,7 @@ const Dashboard = () => {
             <NavLink to="/dashboard/services">
               <DashboardLink
                 icon={<RiDashboard3Line className="iconLink" />}
-                link="Dashboard"
+                link="Contact"
               />
             </NavLink>
           </Fade>
@@ -104,8 +105,13 @@ const Dashboard = () => {
             {" "}
             <NavLink to="/dashboard/services">
               <DashboardLink
-                icon={<RiDashboard3Line className="iconLink" />}
-                link="Dashboard"
+                icon={
+                  <RiDashboard3Line
+                    className="iconLink"
+                    style={{ color: "#3270fc" }}
+                  />
+                }
+                link="User Profile"
               />
             </NavLink>
           </Fade>

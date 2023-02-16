@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CardImage from './cardImage'
+import { CardImage } from "./cardImage";
 import Navigation from "./navigation";
-
+import { HomeFeaturesCards } from "./hoverCards";
 const Landing = () => {
   return (
     <div>
@@ -42,39 +42,73 @@ const Landing = () => {
             ></div>
           </div>
         </div>
-
         <div className="cont">
-          <div class="container">
-            <div
-              class="row"
-              style={{ background: "rgb(20, 20, 90)", height: "150px" }}
-            >
-              <div class="col">
-                <p style={{ fontSize: "30px", color: "white" }}>
-                  We Offer The Highest Level Of Expertise, Service, And
-                  Integrity.
-                </p>
-              </div>
-              <div class="col">
-                <p style={{ fontSize: "10px", color: "white" }}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim,
-                  necessitatibus?Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Enim, necessitatibus?
-                </p>
-              </div>
-            </div>
+          <div className="intro__bottom">
+            <h1>We offer Highest Level of Expertise, Service and Integrity</h1>
+            <h2>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Recusandae fugiat esse animi magnam iusto explicabo dolor
+              consectetur, Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Odit numquam excepturi a veritatis, consequuntur quasi hic
+              dolorem quia tempora? Recusandae cum eaque corrupti architecto!
+              Quod corporis esse nemo tempora molestias. delectus deleniti, id
+              voluptate exercitationem dolores magni nemo ratione facere rem
+              reprehenderit. Sint.
+            </h2>
           </div>
 
           <div className="cardContainer">
-            <CardImage image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/6.jpg" />
-            <CardImage image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/30.jpg" />
-            <CardImage image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/3.jpg" />
+            <CardImage
+              Title={"45 Years Of Experience"}
+              Paragraph={
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida tortor semper nibh vehicula, in tempor urna dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices."
+              }
+            />
+            <CardImage
+              Title={"$125 Billion In Sales"}
+              Paragraph={
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida tortor semper nibh vehicula, in tempor urna dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices."
+              }
+            />
+            <CardImage
+              Title={"Tailormade End-To-End Service"}
+              Paragraph={
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida tortor semper nibh vehicula, in tempor urna dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices."
+              }
+            />
           </div>
-          <div className="cardContainer">
-            <CardImage image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/9.jpg" />
-            <CardImage image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/10.jpg" />
-            <CardImage image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/12.jpg" />
-          </div>
+        </div>
+        <div className="features__body--cards">
+          <HomeFeaturesCards
+            FeatureImage="https://homeradar.kwst.net/images/all/4.jpg"
+            Title={"Rasheco Sante Fe"}
+            SubTitle={"Sprawling Estates"}
+          />
+          <HomeFeaturesCards
+            FeatureImage="https://homeradar.kwst.net/images/all/9.jpg"
+            Title={"Rasheco Sante Fe"}
+            SubTitle={"Sprawling Estates"}
+          />
+          <HomeFeaturesCards
+            FeatureImage="https://homeradar.kwst.net/images/all/5.jpg"
+            Title={"Rasheco Sante Fe"}
+            SubTitle={"Sprawling Estates"}
+          />
+          <HomeFeaturesCards
+            FeatureImage="https://homeradar.kwst.net/images/all/8.jpg"
+            Title={"Rasheco Sante Fe"}
+            SubTitle={"Sprawling Estates"}
+          />
+          <HomeFeaturesCards
+            FeatureImage="https://homeradar.kwst.net/images/all/6.jpg"
+            Title={"Rasheco Sante Fe"}
+            SubTitle={"Sprawling Estates"}
+          />
+          <HomeFeaturesCards
+            FeatureImage="https://homeradar.kwst.net/images/all/1.jpg"
+            Title={"Rasheco Sante Fe"}
+            SubTitle={"Sprawling Estates"}
+          />
         </div>
       </div>
     </div>

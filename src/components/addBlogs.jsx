@@ -5,46 +5,58 @@ import { MdOutlineRealEstateAgent } from "react-icons/md";
 import { BsUpload } from "react-icons/bs";
 import { BsCloudUpload } from "react-icons/bs";
 import Fade from "react-awesome-reveal";
+import { useNavigate } from "react-router-dom";
 
 export const AddBlogs = () => {
   //   const { token } = useSelector((state) => state.auth);
   const [province, setProvince] = useState("");
   const [district, setdistrict] = useState("");
   const [street, setstreet] = useState("");
-  const [price, setprice] = useState("");
-  const [beds, setbeds] = useState("");
+  const [price, setprice] = useState(0);
+  const [beds, setbeds] = useState(0);
   const [description, setdescription] = useState("");
-  const [bath, setbath] = useState("");
-  const [lotSize, setLotSize] = useState("");
+  const [bath, setbath] = useState(0);
+  const [LotSize, setLotSize] = useState("");
   const [status, setStatus] = useState("");
   const [image, setImage] = useState("");
 
+  const navigate = useNavigate();
+
   const handleAddBlog = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("province", province);
-    formData.append("District", district);
-    formData.append("street", street);
-    formData.append("price", price);
-    formData.append("beds", beds);
-    formData.append("description", description);
-    formData.append("bath", bath);
-    formData.append("LotSize", lotSize);
-    formData.append("status", status);
-    formData.append("image", image);
-
-    axios({
-      method: "POST",
-      url: " https://klabapi.onrender.com/api/estate/create",
-      data: formData,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    alert(
+      "The post is going to be visible by clients of this website,are you sure you want to post?"
+    );
+    const data = {
+      province,
+      district,
+      street,
+      beds,
+      bath: bath,
+      price,
+      images: image,
+      description,
+      LotSize: LotSize,
+      status,
+    };
+    onSendPost(data);
   };
+  function onSendPost(data) {
+    let formData = new FormData();
+    Object.keys(data).forEach(function (key) {
+      formData.append(key, data[key]);
+    });
+
+    fetch("https://servapi-2191.onrender.com/api/estates", {
+      method: "POST",
+      body: formData,
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        console.log(result);
+        navigate("/dashboard/myListings");
+      });
+  }
 
   return (
     <div>
@@ -126,7 +138,7 @@ export const AddBlogs = () => {
       </div>
 
       <Fade right>
-        <form className="addblogsForm">
+        <form className="addblogsForm" onSubmit={handleAddBlog}>
           <div className="locationSection">
             <h3 className="basicInfo">
               {" "}

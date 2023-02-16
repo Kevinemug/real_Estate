@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { AccountSignUp } from "./accountSignUp";
 import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import OurProperties from "./ourProperties";
+import axios from "axios";
 
 export const AccountLogin = () => {
   const [closePopup, setClosePopup] = useState(false);
@@ -15,45 +18,37 @@ export const AccountLogin = () => {
     setClosePopup(!closePopup);
   };
 
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  function validateEmail(email) {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-  }
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
+  const navigate = useNavigate();
 
-  function validatePassword(password) {
-    // Add your password validation here
-    // For example, you can check if the password is at least 8 characters long
-    return password.length >= 4;
-  }
+  const handleLogin = (event) => {
+    event.preventDefault();
 
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
+    axios
+      .post("https://brandapi.onrender.com/api/auth/login", {
+        username,
+        password,
+      })
+      .then((response) => {
+        // handle successful login
+        console.log(response.data);
+        const user = response.data;
+        console.log(user);
+        if (user.role === "Admin") {
+          alert("you have successfully logged in as admin");
+          navigate("/dashboard/dash");
+        } else {
+          alert("you have successfully logged in as a client");
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (!validateEmail(email) && !validatePassword(password)) {
-      setError("Incorrect credentials");
-    } else {
-      setError("");
-      // Submit the email address
-      setIsLoggedIn(true);
-    }
-
-    // Perform login logic here, for example using API calls
+          navigate("/contact");
+        }
+      })
+      .catch((error) => {
+        // handle login error
+        console.error(error);
+      });
   };
-
-  if (isLoggedIn) {
-    return <Navigate to="/dashboard/ourProperties" />;
-  }
 
   return (
     <div
@@ -78,39 +73,38 @@ export const AccountLogin = () => {
             , it takes less than a minute.
           </p>
         </div>
-        <form action="" className="login__popup--form">
+        <form action="" className="login__popup--form" onSubmit={handleLogin}>
           <div className="popup__form--name">
-            <label htmlFor="name__input">Email (use: agent)</label>
+            <label htmlFor="name__input">Username (use: agent)</label>
             <input
               type="text"
               id="name__input"
-              value={email}
-              onChange={handleEmailChange}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          {error && (
+          {/* {error && (
             <div className="alert alert-danger" role="alert">
               {error}
             </div>
-          )}
+          )} */}
           <div className="popup__form--password">
             <label htmlFor="password__input">Password (use: agent)</label>
             <input
               type="password"
               id="password__input"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          {error && (
+          {/* {error && (
             <div className="alert alert-danger" role="alert">
               {error}
             </div>
-          )}
+          )} */}
           <button
             className="login__submit--btn"
             style={{ backgroundColor: "#011640" }}
-            onClick={handleLogin}
           >
             Login
           </button>

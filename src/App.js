@@ -31,6 +31,7 @@ class App extends Component {
             <Route path="/myListings" element={<MyListings />} />
             <Route path="/dash" element={<Dash />} />
             <Route path="/" exact element={<Landing />} />
+            <Route path="/contact" exact element={<Landing />} />
             <Route path="/addBlogs" element={<AddBlogs />} />
             <Route path="/dashboard" element={<Dashboard />}>
               <Route path="/dashboard/news" element={<News />} />

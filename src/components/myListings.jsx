@@ -6,18 +6,17 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const MyListings = () => {
-  const [blogs, setBlogs] = useState([]);
-  console.log(blogs, "blogs");
+  const [listings, setListings] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = () => {
     axios({
       method: "GET",
-      url: "https://klabapi.onrender.com/api/posts",
+      url: "https://servapi-2191.onrender.com/api/estates/getAll",
     })
       .then((response) => {
-        setBlogs(response.data);
+        setListings(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -30,6 +29,26 @@ const MyListings = () => {
         <UpdateListings />
       </Fade>
       <div className="listingCardsContainer">
+        {listings.map((item) => {
+          return (
+            <Fade left>
+              <ListingCards
+                image={item.images}
+                paragraph={item.description}
+                address={
+                  item.location.province +
+                  " " +
+                  item.location.district +
+                  " " +
+                  item.location.street
+                }
+                views={0}
+                id={item._id}
+              />
+            </Fade>
+          );
+        })}
+
         <Fade left>
           <ListingCards
             image="https://homeradar.kwst.net/images/all/3.jpg"

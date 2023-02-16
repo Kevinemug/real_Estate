@@ -1,19 +1,72 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Card from "./card";
 import Grid from "./grid";
 import DropDown from "./dropDown";
 import Button from "./button";
 import Fade from "react-awesome-reveal";
+import axios from "axios";
 
 import Input from "./input";
 import PropertyGrid from "./propertyGrid";
+import Navigation from "./navigation";
+import { useNavigate } from "react-router-dom";
 const OurProperties = () => {
+  const [properties, setProperties] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log(properties, "properties");
+  const fetchData = () => {
+    axios({
+      method: "GET",
+      url: "https://servapi-2191.onrender.com/api/estates/getAll",
+    })
+      .then((response) => {
+        setProperties(response.data);
+        navigate("/dashboard/ourProperties");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="ourProperties">
-      <div className="drops">{/* <Input /> */}</div>
+      <Navigation />
+      {/* <div className="drops"><Input /></div> */}
       <PropertyGrid />
       <div className="cards">
         <div className="cardContainer">
+          {properties.map((item) => {
+            if (item.images !== null) {
+              return (
+                <Fade left>
+                  <Card
+                    label={item.price}
+                    bed={item.beds}
+                    bath={item.bath}
+                    sq={item.lotSize}
+                    calendar="Just Now"
+                    image={item.images}
+                  />
+                  //{" "}
+                </Fade>
+              );
+            }
+          })}
+          <Fade right>
+            <Card
+              label="$4,980,000"
+              bed="6"
+              bath="8"
+              sq="7,380"
+              calendar="2 Days AGO"
+              image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/6.jpg"
+            />
+          </Fade>
+
           <Fade left>
             <Card
               label="$7,800,000"
@@ -24,23 +77,13 @@ const OurProperties = () => {
               image="https://d37ukvrrv3in12.cloudfront.net/listings/2f0059e5-0c4c-4ba0-89e9-31ca11a107eb/xl/0.jpg"
             />
           </Fade>
-          <Fade right>
-            <Card
-              label="$4,980,000"
-              bed="6"
-              bath="8"
-              sq="7,380"
-              calendar="6 MONTHS AGO"
-              image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/6.jpg"
-            />
-          </Fade>
           <Fade left>
             <Card
               label="$2,900,000"
               bed="5"
               bath="4"
               sq="4,406"
-              calendar="9 MONTHS AGO"
+              calendar="1 Day AGO"
               image="https://d37ukvrrv3in12.cloudfront.net/listings/67e261f0-e00a-4b44-a981-73e1901e42a9/xl/1.jpg"
             />
           </Fade>

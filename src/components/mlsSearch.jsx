@@ -8,6 +8,7 @@ import Input from "./input";
 const MlsSearch = () => {
   return (
     <div class="containerr">
+      <Navigation />
       <div className="drops">
         <Input />
       </div>

@@ -1,29 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
+import { useState } from "react";
 
-const CardImage = ({ image }) => {
+export const CardImage = ({ Title, Paragraph }) => {
+  const [hoverShadow, setHoverShadow] = useState(false);
+
+  const ShadowDisplay = () => {
+    setHoverShadow(!hoverShadow);
+  };
   return (
-    <div class="card text-white">
-      <div
-        className="card-image"
-        style={{
-          background: `url(${image})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          height: "370px",
-          width:"440px"
-        }}
-      >
-        
-      </div>
-      <div class="card-img-overlay">
-        <h5 class="ct">Card title</h5>
-        <p class="card-text cp">
-         sprawling estrates
-        </p>
-      </div>
+    <div
+      className={`HomeExprereinceCards__container ${
+        hoverShadow ? "hoverShadow__display" : ""
+      }`}
+      onMouseEnter={ShadowDisplay}
+      onMouseLeave={ShadowDisplay}
+    >
+      <h1>{Title}</h1>
+      <p>{Paragraph}</p>
     </div>
   );
 };
-
-export default CardImage;

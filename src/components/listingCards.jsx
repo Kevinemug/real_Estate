@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { MdLocationOn } from "react-icons/md";
 import { BiStar } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
@@ -7,7 +7,30 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { GiNetworkBars } from "react-icons/gi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
-const ListingCards = ({ image, paragraph, address, views }) => {
+import { deletePost } from "./deletePost";
+import { useNavigate } from "react-router-dom";
+import OurProperties from "./ourProperties";
+
+const ListingCards = ({ image, paragraph, address, views, id }) => {
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [posts, setPosts] = useState([]);
+
+  const handleDeleteClick = () => {
+    alert("are you sure you want to delete this post?");
+    setIsDeleting(true);
+    deletePost(id)
+      .then(() => {
+        console.log("Delete");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => {
+        setIsDeleting(false);
+      });
+  };
+
   return (
     <>
       <div className="listingCardParent">
@@ -26,6 +49,7 @@ const ListingCards = ({ image, paragraph, address, views }) => {
               </span>
             </span>
           </div>
+
           <div className="listCardRatings">
             <span>
               <AiFillStar style={{ color: "#f7cd46" }} />
@@ -57,7 +81,14 @@ const ListingCards = ({ image, paragraph, address, views }) => {
               <GiNetworkBars style={{ color: "#487ffc" }} />
             </div>
             <div className="listingCardButton">
-              <RiDeleteBinLine style={{ color: "#487ffc" }} />{" "}
+              {isDeleting ? (
+                "Deleting..."
+              ) : (
+                <RiDeleteBinLine
+                  style={{ color: "#487ffc" }}
+                  onClick={handleDeleteClick}
+                />
+              )}
             </div>
           </div>
         </div>

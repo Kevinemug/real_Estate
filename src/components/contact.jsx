@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-
+import Landing from "./landing";
 const Contact = () => {
-    return ( <h1>contact</h1> );
-}
+  return (
+    <>
+      <Landing />
+    </>
+  );
+};
  
 export default Contact;
