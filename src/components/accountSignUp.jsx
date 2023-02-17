@@ -43,7 +43,7 @@ export const AccountSignUp = () => {
       });
   };
   const handleSign = () => {
-    navigate("/contact");
+    // navigate("/contact");
   };
   return (
     <div

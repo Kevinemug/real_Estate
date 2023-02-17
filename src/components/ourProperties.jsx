@@ -56,16 +56,6 @@ const OurProperties = () => {
               );
             }
           })}
-          <Fade right>
-            <Card
-              label="$4,980,000"
-              bed="6"
-              bath="8"
-              sq="7,380"
-              calendar="2 Days AGO"
-              image="https://d37ukvrrv3in12.cloudfront.net/listings/e5ba9c81-ae6d-40e7-bbc1-63d95533a41c/xl/6.jpg"
-            />
-          </Fade>
 
           <Fade left>
             <Card
