@@ -11,6 +11,7 @@ export const deletePost = (id) => {
     .delete(url)
     .then((response) => {
       console.log(response);
+      window.location.reload();
     })
     .catch((error) => console.error(error));
 

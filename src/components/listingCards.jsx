@@ -21,7 +21,6 @@ const ListingCards = ({ image, paragraph, address, views, id }) => {
     deletePost(id)
       .then(() => {
         console.log("Delete");
-        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
