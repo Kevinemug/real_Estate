@@ -14,6 +14,7 @@ import Landing from "./components/landing";
 import Dash from "./components/dash";
 import { AddBlogs } from "./components/addBlogs";
 import MyListings from "./components/myListings";
+import Sk from "./components/sk";
 class App extends Component {
   render() {
     return (
@@ -29,6 +30,7 @@ class App extends Component {
             <Route path="/services" element={<Services />} />
             <Route path="/background" element={<Background />} />
             <Route path="/myListings" element={<MyListings />} />
+            <Route path="/sk" element={<Sk />} />
             <Route path="/dash" element={<Dash />} />
             <Route path="/" exact element={<Landing />} />
             <Route path="/contact" exact element={<Landing />} />
@@ -40,6 +42,7 @@ class App extends Component {
               <Route path="/dashboard/addBlogs" element={<AddBlogs />} />
               <Route path="/dashboard/background" element={<Background />} />
               <Route path="/dashboard/myListings" element={<MyListings />} />
+              <Route path="/dashboard/sk" element={<Sk />} />
               <Route
                 path="/dashboard/ourProperties"
                 element={<OurProperties />}

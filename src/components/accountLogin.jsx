@@ -3,11 +3,7 @@ import { useState } from "react";
 import { AccountSignUp } from "./accountSignUp";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import OurProperties from "./ourProperties";
 import axios from "axios";
-import Landing from "./landing";
-import Dashboard from "./dashboard";
-
 export const AccountLogin = () => {
   const [closePopup, setClosePopup] = useState(false);
   const [loginPopup, setSignInPopup] = useState(false);

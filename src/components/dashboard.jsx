@@ -103,7 +103,7 @@ const Dashboard = () => {
           </Fade>
           <Fade up>
             {" "}
-            <NavLink to="/dashboard/services">
+            <NavLink to="/dashboard/sk">
               <DashboardLink
                 icon={
                   <RiDashboard3Line
@@ -111,7 +111,7 @@ const Dashboard = () => {
                     style={{ color: "#3270fc" }}
                   />
                 }
-                link="User Profile"
+                link="User "
               />
             </NavLink>
           </Fade>
